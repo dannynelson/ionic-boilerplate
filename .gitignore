@@ -1,0 +1,11 @@
+### Project Specific ###
+phonegap/www
+
+### Generic ###
+vendor
+node_modules
+.sass-cache/
+*.keystore
+*.sw*
+platforms/^.*
+.DS_Store

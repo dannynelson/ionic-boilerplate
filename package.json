@@ -1,0 +1,40 @@
+{
+  "name": "angular-phonegap-boilerplate",
+  "version": "0.0.0",
+  "description": "seed for large phonegap apps",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dannynelson/ionic-angular-cordova-seed.git"
+  },
+  "author": "Danny Nelson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dannynelson/ionic-angular-cordova-seed/issues"
+  },
+  "homepage": "https://github.com/dannynelson/ionic-angular-cordova-seed",
+  "dependencies": {
+    "express": "~3.4.8",
+    "jade": "~1.3.0"
+  },
+  "devDependencies": {
+    "napa": "~0.3.0",
+    "grunt": "~0.4.3",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-karma": "~0.4.4",
+    "grunt-html2js": "~0.1.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "load-grunt-tasks": "~0.4.0"
+  },
+  "scripts": {
+    "install": "napa"
+  },
+  "napa": {
+    "ionic": "driftyco/ionic"
+  }
+}
