@@ -1,3 +1,7 @@
+/**
+ * Entry file for all app javascript
+ */
+
 angular.module('starter', [
   // app-wide dependencies
   'ionic',

@@ -1,0 +1,14 @@
+
+// Overrides for default ionic variables
+$light:                           #000 !default;
+$stable:                          #000 !default;
+$positive:                        #000 !default;
+$calm:                            #000 !default;
+$balanced:                        #000 !default;
+$energized:                       #000 !default;
+$assertive:                       #000 !default;
+$royal:                           #000 !default;
+$dark:                            #000 !default;
+
+// Loads all ionic sass files
+@import "../../../node_modules/ionic/scss/ionic";

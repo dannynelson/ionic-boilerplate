@@ -20,10 +20,12 @@ module.exports = function (grunt) {
       js: [
         'client/**/*.js'
       ],
+      // can only compile one SASS file
       sass: [
-        'node_modules/ionic/scss/ionic.scss',
-        'client/common/**/*.scss',
-        'client/app/**/*.scss'
+        'client/common/scss/index.scss'
+      ],
+      css: [
+        'client/app/**/*.css'
       ],
       tpl: {
         app: ['client/app/**/*.tpl.html'],
@@ -65,6 +67,13 @@ module.exports = function (grunt) {
       index: {
         src: ['client/app/index.html'],
         dest: '<%= distdir %>/index.html',
+        options: {
+          process: true
+        }
+      },
+      css: {
+        src: ['<%= sass.compile.dest %>','<%= src.css %>'],
+        dest: '<%= sass.compile.dest %>',
         options: {
           process: true
         }
@@ -147,13 +156,9 @@ module.exports = function (grunt) {
     },
 
     sass: {
-      dist: {
-        options: {
-          style: 'expanded'
-        },
-        files: {
-          '<%= distdir %>/<%= pkg.name %>.css': ['<%= src.sass %>']
-        }
+      compile: {
+        src: '<%= src.sass %>',
+        dest: '<%= distdir %>/<%= pkg.name %>.css'
       }
     },
 
@@ -185,6 +190,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['jshint','build','karma:unit']);
-  grunt.registerTask('build', ['clean','html2js','concat','sass','copy']);
+  grunt.registerTask('build', ['clean','html2js','sass','concat','copy']);
   grunt.registerTask('release', ['clean','html2js','uglify','jshint','karma:unit','concat:index', 'recess:min','copy:assets']);
 };
