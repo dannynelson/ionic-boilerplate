@@ -193,8 +193,8 @@ module.exports = function (grunt) {
       }
     },
 
-    // Follow instructions https://github.com/angular/protractor to install
-    // and run selenium web driver
+    // Start server and selenium first
+    // Follow instructions https://github.com/angular/protractor to install and run selenium web driver
     protractor: {
       all: {
         options: {

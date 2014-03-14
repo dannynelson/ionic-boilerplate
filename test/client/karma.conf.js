@@ -3,10 +3,12 @@ module.exports = function(config) {
     basePath: '../..',
 
     // sinon-chai includes chai
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'sinon-chai'],
 
     files: [
       'node_modules/ionic/release/js/ionic.bundle.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'phonegap/www/templates/**/*.js',
       'client/**/*.js',
       // Watched files (reload on change, but don't serve)
       {pattern: 'Gruntfile.js', included: false, served: false}
@@ -15,7 +17,7 @@ module.exports = function(config) {
     reporters: ['dots'],
 
     preprocessors: {
-      '**/client/**/*.js': 'coverage'
+      '**/client/**/!(*spec).js': 'coverage'
     },
 
     coverageReporter: {

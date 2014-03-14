@@ -27,7 +27,6 @@
     "grunt-contrib-uglify": "~0.1.1",
     "grunt-contrib-sass": "*",
     "grunt-contrib-watch": "~0.3.1",
-    "grunt-karma": "~0.4.4",
     "grunt-html2js": "~0.1.0",
     "grunt-protractor-runner": "*",
     "load-grunt-tasks": "~0.4.0",
@@ -35,12 +34,17 @@
     "karma-chai": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.2",
     "karma-coverage": "~0.2.0",
-    "protractor": "~0.20.1"
+    "karma-sinon-chai": "*",
+    "protractor": "~0.20.1",
+    "grunt-karma": "~0.8.0",
+    "sinon": "~1.9.0",
+    "sinon-chai": "~2.5.0"
   },
   "scripts": {
     "install": "napa"
   },
   "napa": {
-    "ionic": "driftyco/ionic"
+    "ionic": "driftyco/ionic",
+    "angular-mocks": "angular/bower-angular-mocks"
   }
 }
