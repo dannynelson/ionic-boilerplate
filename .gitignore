@@ -5,6 +5,7 @@ phonegap/www
 vendor
 node_modules
 .sass-cache/
+npm-debug.log
 *.keystore
 *.sw*
 platforms/^.*

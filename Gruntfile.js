@@ -2,12 +2,6 @@ module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  var karmaConfig = function(configFile, customOptions) {
-    var options = { configFile: configFile, keepalive: true };
-    var travisOptions = process.env.TRAVIS && { browsers: ['Firefox'], reporters: 'dots' };
-    return grunt.util._.extend(options, customOptions, travisOptions);
-  };
-
   // Project configuration.
   grunt.initConfig({
 
@@ -151,8 +145,35 @@ module.exports = function (grunt) {
     },
 
     karma: {
-      unit: { options: karmaConfig('test/config/unit.js') },
-      watch: { options: karmaConfig('test/config/unit.js', { singleRun:false, autoWatch: true}) }
+      options: {
+        configFile: 'test/client/karma.conf.js',
+      },
+      continuous: {
+        singleRun: true,
+      },
+      coverage: {
+        reporters: ['coverage'],
+      },
+      watch: {
+        autoWatch: true,
+        singleRun: false
+      },
+
+      debug: {
+        autoWatch: true,
+        singleRun: false,
+        browsers: ['Chrome']
+      }
+    },
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'dot',
+          require: ['./test/server/config/bootstrap']
+        },
+        src: ['test/server/unit/**/*.js']
+      }
     },
 
     sass: {
@@ -170,6 +191,17 @@ module.exports = function (grunt) {
         src:['<%= src.js %>' ,'<%= src.jsTpl %>'],
         dest:'<%= distdir %>/<%= pkg.name %>.js'
       }
+    },
+
+    // Follow instructions https://github.com/angular/protractor to install
+    // and run selenium web driver
+    protractor: {
+      all: {
+        options: {
+          configFile: "test/e2e/e2e.conf.js", // Target-specific config file
+          args: {} // Target-specific arguments
+        }
+      },
     },
 
     watch:{
