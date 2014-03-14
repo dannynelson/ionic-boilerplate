@@ -176,6 +176,24 @@ module.exports = function (grunt) {
       }
     },
 
+    protractor: {
+      all: {
+        options: {
+          configFile: "test/e2e/e2e.conf.js", // Target-specific config file
+          args: {} // Target-specific arguments
+        }
+      },
+    },
+
+    // Follow instructions https://github.com/angular/protractor to install selenium web driver
+    protractor_webdriver: {
+      main: {
+        options: {
+          command: 'webdriver-manager start',
+        },
+      },
+    },
+
     sass: {
       compile: {
         src: '<%= src.sass %>',
@@ -191,17 +209,6 @@ module.exports = function (grunt) {
         src:['<%= src.js %>' ,'<%= src.jsTpl %>'],
         dest:'<%= distdir %>/<%= pkg.name %>.js'
       }
-    },
-
-    // Start server and selenium first
-    // Follow instructions https://github.com/angular/protractor to install and run selenium web driver
-    protractor: {
-      all: {
-        options: {
-          configFile: "test/e2e/e2e.conf.js", // Target-specific config file
-          args: {} // Target-specific arguments
-        }
-      },
     },
 
     watch:{
@@ -222,6 +229,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['jshint','build','karma:unit']);
+  grunt.registerTask('e2e', ['protractor_webdriver', 'protractor']);
   grunt.registerTask('build', ['clean','html2js','sass','concat','copy']);
   grunt.registerTask('release', ['clean','html2js','uglify','jshint','karma:unit','concat:index', 'recess:min','copy:assets']);
 };
