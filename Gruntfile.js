@@ -170,9 +170,9 @@ module.exports = function (grunt) {
       test: {
         options: {
           reporter: 'dot',
-          require: ['./test/server/config/bootstrap']
+          require: ['./test/api/bootstrap']
         },
-        src: ['test/server/unit/**/*.js']
+        src: ['test/api/**/*.spec.js']
       }
     },
 
