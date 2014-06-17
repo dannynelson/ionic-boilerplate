@@ -12,11 +12,14 @@ module.exports = function (grunt) {
         'node_modules/ionic/release/js/ionic.bundle.js'
       ],
       js: [
-        'client/**/*.js'
+        'client/**/*.js', '!client/**/*.spec.js'
       ],
       // can only compile one SASS file
       sass: [
         'client/common/scss/index.scss'
+      ],
+      sassWatchDir: [
+        'client/common/scss/**/*.scss'
       ],
       css: [
         'client/app/**/*.css'
@@ -213,11 +216,11 @@ module.exports = function (grunt) {
 
     watch:{
       all: {
-        files:['<%= src.js %>', '<%= src.specs %>', '<%= src.sass %>', '<%= src.tpl.app %>', '<%= src.tpl.common %>', '<%= src.html %>'],
+        files:['<%= src.js %>', '<%= src.specs %>', '<%= src.sassWatchDir %>', '<%= src.tpl.app %>', '<%= src.tpl.common %>', '<%= src.html %>'],
         tasks:['default','timestamp']
       },
       build: {
-        files:['<%= src.js %>', '<%= src.specs %>', '<%= src.sass %>', '<%= src.tpl.app %>', '<%= src.tpl.common %>', '<%= src.html %>'],
+        files:['<%= src.js %>', '<%= src.specs %>', '<%= src.sassWatchDir %>', '<%= src.tpl.app %>', '<%= src.tpl.common %>', '<%= src.html %>'],
         tasks:['build','timestamp']
       }
     }
